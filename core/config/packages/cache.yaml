@@ -1,0 +1,23 @@
+framework:
+    cache:
+        app: cache.adapter.redis
+        system: cache.adapter.redis
+
+        # Put the unique name of your app here: the prefix seed
+        # is used to compute stable namespaces for cache keys.
+        prefix_seed: 'webcore/core_%kernel.environment%'
+        default_redis_provider: '%env(REDIS_DSN)%'
+
+        pools:
+            doctrine.cache.metadata:
+                adapter: cache.adapter.redis
+                provider: cache.default_redis_provider
+            doctrine.cache.result:
+                adapter: cache.adapter.redis
+                provider: cache.default_redis_provider
+            doctrine.cache.query:
+                adapter: cache.adapter.redis
+                provider: cache.default_redis_provider
+            doctrine.cache.second_level:
+                adapter: cache.adapter.redis
+                provider: cache.default_redis_provider
